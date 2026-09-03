@@ -16,7 +16,7 @@
   --color-text-pri-dark: #e5e5e5;
   --color-text-sec-dark: #e6ca65;
   --color-highlight-dark: #fff;
-
+  /* font */
   --font-inter: "Inter", sans-serif;
   --font-playfair: "Playfair Display", serif;
 }

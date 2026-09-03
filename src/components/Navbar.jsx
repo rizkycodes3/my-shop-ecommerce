@@ -11,10 +11,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-background p-2 grid grid-cols-2 gap-4 font-inter ${isOpen ? "grid-rows-[minmax(0,1fr),1fr]" : "grid-rows-1"} dark:bg-background-dark dark:text-text-pri-dark`}
+      className={`bg-background p-2 grid grid-cols-2 gap-4 font-inter ${isOpen ? "grid-rows-[minmax(0,1fr),1fr]" : "grid-rows-1"} fixed top-0 right-0 left-0 z-10 dark:bg-background-dark dark:text-text-pri-dark md:px-10`}
     >
       {/* main navbar */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 ">
         <FcShop className="text-3xl" />
         <h1 className="text-2xl font-bold">My Shop</h1>
       </div>
