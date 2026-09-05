@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-background p-2 grid grid-cols-2 gap-4 font-inter ${isOpen ? "grid-rows-[minmax(0,1fr),1fr]" : "grid-rows-1"} fixed top-0 right-0 left-0 z-10 dark:bg-background-dark dark:text-text-pri-dark md:px-10`}
+      className={`bg-l-secondary p-2 grid grid-cols-2 gap-4 font-inter ${isOpen ? "grid-rows-[minmax(0,1fr),1fr]" : "grid-rows-1"} fixed top-0 right-0 left-0 z-10 dark:bg-d-secondary dark:text-d-text-primary md:px-10`}
     >
       {/* main navbar */}
       <div className="flex items-center gap-2 ">
@@ -40,17 +40,22 @@ const Navbar = () => {
       {/* hidden navbar */}
       <div className={`row-[2/3] col-span-full ${isOpen ? "flex" : "hidden"} flex-col gap-2`}>
         <div className="relative">
-          <input type="search" name="search" placeholder="Search Items..." className="w-full p-1 rounded-md outline-0 ring-2 ring-slate-700 pr-7" />
+          <input
+            type="search"
+            name="search"
+            placeholder="Search Items..."
+            className="w-full p-1 rounded-md outline-0 ring-2 ring-l-border-color pr-7 dark:ring-d-border-color"
+          />
           <MdSearch className="absolute right-1 top-1/2 -translate-y-1/2 text-xl" />
         </div>
         <a href="#" className="hover:underline w-fit">
           Home
         </a>
-        <a href="#" className="hover:underline w-fit">
-          Catalog
+        <a href="#product" className="hover:underline w-fit">
+          Catalog Product
         </a>
-        <a href="#" className="hover:underline w-fit">
-          Wishlist
+        <a href="#promo" className="hover:underline w-fit">
+          Promo
         </a>
       </div>
     </nav>

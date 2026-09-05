@@ -5,17 +5,31 @@
 
 @theme {
   /* light */
-  --color-surface: #fff;
-  --color-background: #fafafa;
-  --color-text-pri: #1a1a1a;
-  --color-text-sec: #d4af37;
-  --color-highlight: #000;
+  --color-l-primary: #fff; /*Background halaman utama*/
+  --color-l-secondary: #f8fafc; /*Background kartu, sidebar, & modal*/
+  --color-l-tertiary: #f1f5f9; /*Hover state, input field, & divider*/
+  --color-l-text-primary: #0f172a; /*Teks judul & bodi utama*/
+  --color-l-text-secondary: #475569; /*Subtitle, meta info, & placeholder*/
+  --color-l-text-muted: #94a3b8; /*Text disabled & footer copyright*/
+  --color-l-accent-primary: #2563eb; /*Primary button, active tab, & link*/
+  --color-l-accent-hover: #1d4ed8; /*State hover tombol utama*/
+  --color-l-accent-success: #16a34a; /*Status transaksi sukses & stok tersedia*/
+  --color-l-accent-warning: #d97706; /*Peringatan stok tipis / diskon*/
+  --color-l-accent-danger: #dc2626; /*Pesan error & tombol hapus/batal*/
+  --color-l-border-color: #e2e8f0; /*Border elemen, garis pemisah*/
   /* dark */
-  --color-surface-dark: #1e1e1e;
-  --color-background-dark: #121212;
-  --color-text-pri-dark: #e5e5e5;
-  --color-text-sec-dark: #e6ca65;
-  --color-highlight-dark: #fff;
+  --color-d-primary: #0f172a;
+  --color-d-secondary: #1e293b;
+  --color-d-tertiary: #334155;
+  --color-d-text-primary: #f8fafc;
+  --color-d-text-secondary: #94a3b8;
+  --color-d-text-muted: #64748b;
+  --color-d-accent-primary: #3b82f6;
+  --color-d-accent-hover: #60a5fa;
+  --color-d-accent-success: #22c55e;
+  --color-d-accent-warning: #f59e0b;
+  --color-d-accent-danger: #ef4444;
+  --color-d-border-color: #334155;
   /* font */
   --font-inter: "Inter", sans-serif;
   --font-playfair: "Playfair Display", serif;
