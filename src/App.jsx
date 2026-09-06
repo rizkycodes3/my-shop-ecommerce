@@ -1,14 +1,20 @@
 import Hero from "./components/hero/Hero";
 import Navbar from "./components/Navbar";
-import Product from "./components/Product";
+import ProductPreview from "./components/ProductPreview";
+import Promo from "./components/Promo";
+// context
 import { ThemeProvider } from "./contexts/ThemeProvider";
+import { ProductProvider } from "./contexts/ProductProvider";
 
 const App = () => {
   return (
     <ThemeProvider>
-      <Navbar />
-      <Hero />
-      <Product />
+      <ProductProvider>
+        <Navbar />
+        <Hero />
+        <ProductPreview />
+        <Promo />
+      </ProductProvider>
     </ThemeProvider>
   );
 };

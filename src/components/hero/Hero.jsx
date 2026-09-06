@@ -9,7 +9,7 @@ import "swiper/css/autoplay";
 
 const Hero = () => {
   return (
-    <section className={`swiper h-[calc(100vh-48px)] w-auto mt-12 bg-l-primary text-l-text-primary dark:bg-d-primary dark:text-d-text-primary`}>
+    <main className={`swiper h-[calc(100vh-48px)] w-auto mt-12 bg-l-primary text-l-text-primary dark:bg-d-primary dark:text-d-text-primary`}>
       <Swiper modules={[Autoplay]} loop={true} autoplay={{ delay: 3000, pauseOnMouseEnter: true }} slidesPerView={1} className="w-full h-full">
         <SwiperSlide>
           <Slide1 />
@@ -21,7 +21,7 @@ const Hero = () => {
           <Slide3 />
         </SwiperSlide>
       </Swiper>
-    </section>
+    </main>
   );
 };
 

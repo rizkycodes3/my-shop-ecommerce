@@ -1,41 +1,26 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useContext } from "react";
+import { ProductContext } from "../contexts/ProductProvider";
 // swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 // logo
 import { FaStar, FaArrowRight } from "react-icons/fa6";
 
-const Product = () => {
-  // state
-  const [products, setProducts] = useState([]);
-  // fetch data
-  const fetchProduct = async () => {
-    try {
-      const res = await axios.get("https://fakestoreapi.com/products");
-      const productRes = res.data.slice(0, 5);
-      setProducts(productRes);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  useEffect(() => {
-    fetchProduct();
-  }, []);
+const ProductPreview = () => {
+  const { products } = useContext(ProductContext);
+  const productsSlice = products.slice(0, 5);
 
   return (
-    <div id="product" className="pt-12 bg-l-primary dark:bg-d-primary text-l-text-primary dark:text-d-text-primary">
-      <h1 className="text-center text-2xl font-semibold py-7">Catalog Product</h1>
+    <section id="product" className="pt-12 bg-l-primary dark:bg-d-primary text-l-text-primary dark:text-d-text-primary">
       <Swiper
         modules={[Autoplay]}
         loop={true}
         spaceBetween={20}
         autoplay={{
           delay: 3000,
-          disableOnInteraction: false,
         }}
         slidesPerView={1}
         breakpoints={{
@@ -50,7 +35,7 @@ const Product = () => {
         }}
         className="bg-l-secondary dark:bg-d-secondary mx-3! px-3! rounded-md md:mx-5! md:px-5!"
       >
-        {products.map((pro) => (
+        {productsSlice.map((pro) => (
           <SwiperSlide key={pro.id} className="swiper-slide py-5 flex! flex-col gap-2">
             <img src={pro.image} alt={pro.title} className="w-auto h-60 mx-auto" />
             <h2 className="text-2xl font-semibold font-playfair mt-5">{pro.title}</h2>
@@ -63,13 +48,14 @@ const Product = () => {
             <p className="text-l-text-secondary dark:text-d-text-secondary">{pro.description}</p>
           </SwiperSlide>
         ))}
+
         <a href="#" className="flex items-center gap-1 pb-5 hover:underline">
           Lihat Semua Product
           <FaArrowRight className="text-sm" />
         </a>
       </Swiper>
-    </div>
+    </section>
   );
 };
 
-export default Product;
+export default ProductPreview;
