@@ -8,8 +8,8 @@ const Promo = () => {
   const spanTitle = "text-[#FE5B00] text-shadow-[2px_2px_0] text-shadow-white text-4xl";
 
   return (
-    <section id="promo" className="bg-l-primary dark:bg-d-primary pt-12 text-l-text-primary dark:text-d-text-primary">
-      <div className="bg-linear-to-r from-[#1059AF]/50 to-[#BE96C8]/50 mx-3 px-3 pt-5 pb-10 rounded-sm flex flex-col gap-10 sm:flex-row sm:items-center md:mx-5 lg:justify-around ">
+    <section id="promo" className="bg-l-primary dark:bg-d-primary py-12 text-l-text-primary dark:text-d-text-primary">
+      <div className="bg-linear-to-r from-[#1059AF]/50 to-[#BE96C8]/50 mx-3 px-3 pt-5 pb-10 rounded-sm flex flex-col gap-10 items-center sm:flex-row md:mx-5 lg:justify-around ">
         {/* promo content */}
         <div className="flex flex-col gap-3 sm:w-1/2">
           <h1 className="text-3xl text-d-text-primary font-bold text-shadow-[2px_2px_0] text-shadow-l-accent-warning text-center">
@@ -30,12 +30,23 @@ const Promo = () => {
           <div className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 rounded-full p-4 flex flex-col font-bold text-center bg-l-secondary text-[#0A2A56]">
             Hemat s.d <span className="text-4xl">50%</span>
           </div>
-          <img src={productSlice[0].image} className="w-auto h-30 absolute bottom-8 left-0 -rotate-8" />
-          <img src={productSlice[1].image} className="w-auto h-30 absolute top-0 right-0 -scale-x-100" />
-          <img src={productSlice[2].image} className="w-auto h-30 absolute top-0 left-0 rotate-8" />
-          <img src={productSlice[3].image} className="w-auto h-30 absolute bottom-8 right-0 -rotate-8" />
-          <img src={productSlice[4].image} className="w-auto h-25 absolute -top-15 right-1/2 translate-1/2" />
-          <img src={productSlice[5].image} className="w-auto h-15 absolute bottom-5 right-1/2 translate-1/2" />
+          {productSlice.map((product, index) => (
+            <img
+              key={product.id}
+              src={product.image}
+              alt={product.title}
+              className={
+                [
+                  "w-auto absolute h-30 bottom-8 left-0 -rotate-8",
+                  "w-auto absolute h-30 top-0 right-0 -scale-x-100",
+                  "w-auto absolute h-30 top-0 left-0 rotate-8",
+                  "w-auto absolute h-30 bottom-8 right-0 -rotate-8",
+                  "w-auto absolute h-25 -top-15 right-1/2 translate-1/2",
+                  "w-auto absolute h-15 bottom-5 right-1/2 translate-1/2",
+                ][index]
+              }
+            />
+          ))}
         </div>
       </div>
     </section>

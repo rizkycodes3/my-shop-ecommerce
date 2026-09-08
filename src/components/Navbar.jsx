@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ThemeContext } from "../contexts/ThemeProvider";
+import ThemeContext from "../contexts/ThemeContext";
 import { FcShop } from "react-icons/fc";
 import { MdSearch, MdOutlineShoppingCart, MdMenu, MdOutlineCancel } from "react-icons/md";
 import LightMode from "../assets/light-mode.png";

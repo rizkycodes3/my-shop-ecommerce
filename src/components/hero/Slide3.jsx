@@ -14,15 +14,6 @@ const Slide3 = () => {
       <p className="text-base text-l-text-secondary max-w-xl font-sans leading-relaxed dark:text-d-text-secondary sm:text-xl">
         Jangan lewatkan penawaran spesial kami yang hanya berlaku untuk waktu terbatas. Dapatkan harga terbaik sebelum kehabisan!
       </p>
-      {/* button */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-2 w-full sm:w-auto">
-        <a
-          href="#promo"
-          className="w-full px-8 py-3.5 bg-linear-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 font-semibol text-text-pri-dark rounded-xl shadow-lg shadow-orange-500/25 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 sm:w-auto"
-        >
-          Klaim Promo Minggu Ini
-        </a>
-      </div>
     </div>
   );
 };
