@@ -1,21 +1,22 @@
-import Hero from "./components/hero/Hero";
+import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import ProductPreview from "./components/ProductPreview";
-import Promo from "./components/Promo";
-import Footer from "./components/Footer";
+import Catalog from "./components/Catalog";
 // context
 import { ThemeProvider } from "./contexts/ThemeProvider";
 import { ProductProvider } from "./contexts/ProductProvider";
+// router
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <ThemeProvider>
       <ProductProvider>
         <Navbar />
-        <Hero />
-        <ProductPreview />
-        <Promo />
-        <Footer />
+        <Routes>
+          {/* deklarasi route */}
+          <Route path="/" element={<Hero />} />
+          <Route path="/catalog" element={<Catalog />} />
+        </Routes>
       </ProductProvider>
     </ThemeProvider>
   );

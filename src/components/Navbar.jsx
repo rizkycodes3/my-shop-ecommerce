@@ -1,9 +1,14 @@
+// context
 import { useContext, useState } from "react";
 import ThemeContext from "../contexts/ThemeContext";
+// icons
 import { FcShop } from "react-icons/fc";
 import { MdSearch, MdOutlineShoppingCart, MdMenu, MdOutlineCancel } from "react-icons/md";
+// image
 import LightMode from "../assets/light-mode.png";
 import DarkMode from "../assets/dark-mode.png";
+// link
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -29,7 +34,9 @@ const Navbar = () => {
           />
           <img src={DarkMode} alt="dark mode" className="w-12 cursor-pointer drop-shadow-2xl transition-all duration-300" />
         </div>
+
         <MdOutlineShoppingCart className="cursor-pointer" />
+
         {isOpen ? (
           <MdOutlineCancel onClick={() => setIsOpen(false)} className="cursor-pointer" />
         ) : (
@@ -39,6 +46,7 @@ const Navbar = () => {
 
       {/* hidden navbar */}
       <div className={`row-[2/3] col-span-full ${isOpen ? "flex" : "hidden"} flex-col gap-2`}>
+        {/* search */}
         <div className="relative">
           <input
             type="search"
@@ -48,15 +56,13 @@ const Navbar = () => {
           />
           <MdSearch className="absolute right-1 top-1/2 -translate-y-1/2 text-xl" />
         </div>
-        <a href="#" className="hover:underline w-fit">
+
+        <Link onClick={() => setIsOpen(false)} to="/" className="hover:underline w-fit">
           Home
-        </a>
-        <a href="#product" className="hover:underline w-fit">
+        </Link>
+        <Link onClick={() => setIsOpen(false)} to="catalog" className="hover:underline w-fit">
           Catalog Product
-        </a>
-        <a href="#promo" className="hover:underline w-fit">
-          Promo
-        </a>
+        </Link>
       </div>
     </nav>
   );

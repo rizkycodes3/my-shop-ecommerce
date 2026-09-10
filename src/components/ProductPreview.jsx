@@ -1,3 +1,4 @@
+// context
 import { useContext } from "react";
 import ProductContext from "../contexts/ProductContext";
 // swiper
@@ -8,6 +9,8 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 // logo
 import { FaStar, FaArrowRight } from "react-icons/fa6";
+// route
+import { Link } from "react-router-dom";
 
 const ProductPreview = () => {
   const { products } = useContext(ProductContext);
@@ -49,10 +52,10 @@ const ProductPreview = () => {
           </SwiperSlide>
         ))}
 
-        <a href="#" className="flex items-center gap-1 pb-5 hover:underline">
+        <Link to="/catalog" className="flex items-center gap-1 pb-5 hover:underline">
           Lihat Semua Product
           <FaArrowRight className="text-sm" />
-        </a>
+        </Link>
       </Swiper>
     </section>
   );

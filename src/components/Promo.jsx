@@ -1,5 +1,8 @@
+// context
 import { useContext } from "react";
 import ProductContext from "../contexts/ProductContext";
+// route
+import { Link } from "react-router-dom";
 
 const Promo = () => {
   const { products } = useContext(ProductContext);
@@ -18,12 +21,12 @@ const Promo = () => {
           <p className="text-l-text-secondary dark:text-d-text-secondary font-semibold text-center">
             Dapatkan produk best-seller pilihan Anda dengan potongan harga hingga <span>50%</span>. Beli sekarang sebelum kehabisan!
           </p>
-          <a
-            href="#"
+          <Link
+            to="/catalog"
             className="bg-l-accent-warning dark:bg-d-accent-warning mx-auto w-fit py-2 px-4 rounded-2xl mt-5 transition-all hover:-translate-y-2 hover:shadow-md shadow-amber-400/50"
           >
             Belanja Sekarang
-          </a>
+          </Link>
         </div>
         {/* image */}
         <div className="relative ring-4 ring-l-primary h-75 w-75 rounded-full bg-linear-to-r from-[#00d2ff] to-[#3a7bd5]">

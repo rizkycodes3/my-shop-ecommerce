@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Slide2 = () => {
   return (
     <div className="swiper-slide py-16 px-6 text-center flex! flex-col justify-center items-center gap-6 sm:py-24 sm:px-12">
@@ -16,12 +18,12 @@ const Slide2 = () => {
       </p>
       {/* button */}
       <div className="mt-8">
-        <a
-          href="#product"
+        <Link
+          to="/catalog"
           className="w-full px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-xl shadow-lg shadow-orange-600/25 transition-all duration-200 transform hover:-translate-y-0.5 sm:w-auto"
         >
           Belanja Sekarang
-        </a>
+        </Link>
       </div>
     </div>
   );
