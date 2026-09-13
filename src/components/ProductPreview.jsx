@@ -39,16 +39,14 @@ const ProductPreview = () => {
         className="bg-l-secondary dark:bg-d-secondary mx-3! px-3! rounded-md md:mx-5! md:px-5!"
       >
         {productsSlice.map((pro) => (
-          <SwiperSlide key={pro.id} className="swiper-slide py-5 flex! flex-col gap-2">
-            <img src={pro.image} alt={pro.title} className="w-auto h-60 mx-auto" />
+          <SwiperSlide key={pro.id} className="swiper-slide py-5 flex! flex-col gap-2 h-130!">
+            <img src={pro.image} alt="image" className="w-auto h-60 mx-auto" />
             <h2 className="text-2xl font-semibold font-playfair mt-5">{pro.title}</h2>
             <span className="flex gap-1 items-center bg-l-accent-warning/30 w-fit rounded-sm px-1">
               <FaStar className="text-xs" />
               {pro.rating.rate}
             </span>
-            <span>${pro.price}</span>
-            <span>{pro.category}</span>
-            <p className="text-l-text-secondary dark:text-d-text-secondary">{pro.description}</p>
+            <span className="text-2xl font-semibold">${pro.price}</span>
           </SwiperSlide>
         ))}
 

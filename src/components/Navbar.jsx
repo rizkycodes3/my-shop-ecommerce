@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import ThemeContext from "../contexts/ThemeContext";
 // icons
 import { FcShop } from "react-icons/fc";
-import { MdSearch, MdOutlineShoppingCart, MdMenu, MdOutlineCancel } from "react-icons/md";
+import { MdOutlineShoppingCart, MdMenu, MdOutlineCancel } from "react-icons/md";
 // image
 import LightMode from "../assets/light-mode.png";
 import DarkMode from "../assets/dark-mode.png";
@@ -21,7 +21,7 @@ const Navbar = () => {
       {/* main navbar */}
       <div className="flex items-center gap-2 ">
         <FcShop className="text-3xl" />
-        <h1 className="text-2xl font-bold">My Shop</h1>
+        <h1 className="text-2xl font-bold font-playfair">My Shop</h1>
       </div>
 
       <div className="flex items-center justify-end gap-2 text-2xl sm:gap-5">
@@ -46,17 +46,6 @@ const Navbar = () => {
 
       {/* hidden navbar */}
       <div className={`row-[2/3] col-span-full ${isOpen ? "flex" : "hidden"} flex-col gap-2`}>
-        {/* search */}
-        <div className="relative">
-          <input
-            type="search"
-            name="search"
-            placeholder="Search Items..."
-            className="w-full p-1 rounded-md outline-0 ring-2 ring-l-border-color pr-7 dark:ring-d-border-color"
-          />
-          <MdSearch className="absolute right-1 top-1/2 -translate-y-1/2 text-xl" />
-        </div>
-
         <Link onClick={() => setIsOpen(false)} to="/" className="hover:underline w-fit">
           Home
         </Link>
