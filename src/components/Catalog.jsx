@@ -1,40 +1,71 @@
-// context
+//👇 context
 import { useContext, useState } from "react";
 import ProductContext from "../contexts/ProductContext";
-// icons
+//👇 icons
 import { MdSearch, MdOutlineAddShoppingCart } from "react-icons/md";
 import { FaStar } from "react-icons/fa6";
 
 const Catalog = () => {
-  // product
+  //👇 product
   const { products } = useContext(ProductContext);
-  // state
+  //👇 state
   const [whatCategory, setWhatCategory] = useState("");
   const [whatPrice, setWhatPrice] = useState("");
   const [isRating, setIsRating] = useState(false);
-  // function
-  const changeCategory = (event) => setWhatCategory(event.target.value);
-  const changePrice = (event) => setWhatPrice(event.target.value);
-  const changeRating = () => setIsRating(() => (isRating ? false : true));
-  // variable
+  const [whatSearch, setWhatSearch] = useState("");
+  //👇 variable
   const styleSelect = "w-fit p-1 capitalize text-xs bg-l-primary dark:bg-d-primary cursor-pointer";
+  //👇 function
+  const changeCategory = (e) => setWhatCategory(e.target.value);
+  const changePrice = (e) => {
+    setIsRating(false);
+    return setWhatPrice(e.target.value);
+  };
+  const changeSearch = (e) => setWhatSearch(e.target.value);
+  const changeRating = () => setIsRating(() => (isRating ? false : true));
+  const resetFilter = () => {
+    setWhatCategory("");
+    setWhatPrice("");
+    setIsRating(false);
+    setWhatSearch("");
+  };
+  const productsFilter = products.filter((pro) => {
+    const search = pro.title.toLowerCase().includes(whatSearch.toLowerCase());
+    const category = pro.category === whatCategory;
+    const price = products.sort((a, b) => {
+      if (whatPrice === "tertinggi") {
+        return b.price - a.price;
+      } else if (whatPrice === "terendah") {
+        return a.price - b.price;
+      }
+    });
+    const rating = products.sort((a, b) => {
+      if (isRating) {
+        return b.rating.rate - a.rating.rate;
+      }
+    });
+
+    return (whatSearch === "" || search) && (whatCategory === "" || category) && (whatPrice === "" || price) && (!isRating || rating);
+  });
 
   return (
-    <section className="w-screen mt-12 bg-l-primary dark:bg-d-primary text-l-text-primary dark:text-d-text-primary">
-      {/* filter */}
+    <section className="mt-12 bg-l-primary dark:bg-d-primary text-l-text-primary dark:text-d-text-primary">
+      {/*👇 filter */}
       <div className="bg-gray-400/50 p-2 flex flex-wrap gap-3">
         <div className="relative w-full">
           <input
             type="search"
             name="search"
             placeholder="Cari Barang..."
+            value={whatSearch}
             className="w-full p-1 text-sm rounded-md outline-0 ring-2 ring-l-border-color pr-7 dark:ring-d-border-color"
+            onInput={changeSearch}
           />
           <MdSearch className="absolute right-1 top-1/2 -translate-y-1/2" />
         </div>
 
-        <select name="category" onChange={changeCategory} className={styleSelect}>
-          <option value="category" hidden>
+        <select name="category" value={whatCategory} onChange={changeCategory} className={styleSelect}>
+          <option value="" hidden>
             kategori
           </option>
           {products
@@ -46,8 +77,8 @@ const Catalog = () => {
             ))}
         </select>
 
-        <select name="harga" onChange={changePrice} className={styleSelect}>
-          <option value="harga" hidden>
+        <select name="harga" value={whatPrice} onChange={changePrice} className={styleSelect}>
+          <option value="" hidden>
             Harga
           </option>
           <option value="tertinggi">Harga Tertinggi</option>
@@ -60,11 +91,15 @@ const Catalog = () => {
         >
           Rating
         </button>
+        <button onClick={resetFilter} className={styleSelect}>
+          Reset
+        </button>
       </div>
-      {/* catalog items */}
+
+      {/*👇 catalog items */}
       <ul className="grid grid-cols-2 gap-x-3 gap-y-8 p-3 md:grid-cols-3 lg:grid-cols-4">
-        {products.map((pro) => (
-          <li key={pro.id} className="py-5 px-3 pb-15 flex flex-col gap-2 w-fit h-full relative bg-l-secondary dark:bg-d-secondary rounded-md">
+        {productsFilter.map((pro, i) => (
+          <li key={i} className="py-5 px-3 pb-15 flex flex-col gap-2 w-fit h-full relative bg-l-secondary dark:bg-d-secondary rounded-md">
             <img src={pro.image} alt="image" className="w-auto h-30 mx-auto" />
             <h2 className="font-semibold font-playfair mt-5 lg:text-lg">{pro.title}</h2>
             <span className="flex gap-1 items-center text-sm bg-l-accent-warning/30 w-fit rounded-sm px-1">
