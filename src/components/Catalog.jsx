@@ -1,18 +1,36 @@
 //👇 context
 import { useContext, useState } from "react";
-import ProductContext from "../contexts/ProductContext";
+import { CartContext, ProductContext } from "../contexts/Context";
 //👇 icons
 import { MdSearch, MdOutlineAddShoppingCart } from "react-icons/md";
 import { FaStar } from "react-icons/fa6";
 
 const Catalog = () => {
-  //👇 product
-  const { products } = useContext(ProductContext);
   //👇 state
   const [whatCategory, setWhatCategory] = useState("");
   const [whatPrice, setWhatPrice] = useState("");
   const [isRating, setIsRating] = useState(false);
   const [whatSearch, setWhatSearch] = useState("");
+  //👇 product
+  const { cartItems, setCartItems } = useContext(CartContext);
+  const { products } = useContext(ProductContext);
+  const productsFilter = products.filter((pro) => {
+    const search = pro.title.toLowerCase().includes(whatSearch.toLowerCase());
+    const category = pro.category === whatCategory;
+    const price = products.sort((a, b) => {
+      if (whatPrice === "tertinggi") {
+        return b.price - a.price;
+      } else if (whatPrice === "terendah") {
+        return a.price - b.price;
+      }
+    });
+    const rating = products.sort((a, b) => {
+      if (isRating) {
+        return b.rating.rate - a.rating.rate;
+      }
+    });
+    return (whatSearch === "" || search) && (whatCategory === "" || category) && (whatPrice === "" || price) && (!isRating || rating);
+  });
   //👇 variable
   const styleSelect = "w-fit p-1 capitalize text-xs bg-l-primary dark:bg-d-primary cursor-pointer";
   //👇 function
@@ -29,24 +47,10 @@ const Catalog = () => {
     setIsRating(false);
     setWhatSearch("");
   };
-  const productsFilter = products.filter((pro) => {
-    const search = pro.title.toLowerCase().includes(whatSearch.toLowerCase());
-    const category = pro.category === whatCategory;
-    const price = products.sort((a, b) => {
-      if (whatPrice === "tertinggi") {
-        return b.price - a.price;
-      } else if (whatPrice === "terendah") {
-        return a.price - b.price;
-      }
-    });
-    const rating = products.sort((a, b) => {
-      if (isRating) {
-        return b.rating.rate - a.rating.rate;
-      }
-    });
-
-    return (whatSearch === "" || search) && (whatCategory === "" || category) && (whatPrice === "" || price) && (!isRating || rating);
-  });
+  const test = (e) => {
+    setCartItems(e.target.parentElement);
+    console.log(cartItems);
+  };
 
   return (
     <section className="mt-12 bg-l-primary dark:bg-d-primary text-l-text-primary dark:text-d-text-primary">
@@ -97,7 +101,7 @@ const Catalog = () => {
       </div>
 
       {/*👇 catalog items */}
-      <ul className="grid grid-cols-2 gap-x-3 gap-y-8 p-3 md:grid-cols-3 lg:grid-cols-4">
+      <ul onClick={test} className="grid grid-cols-2 gap-x-3 gap-y-8 p-3 md:grid-cols-3 lg:grid-cols-4">
         {productsFilter.map((pro, i) => (
           <li key={i} className="py-5 px-3 pb-15 flex flex-col gap-2 w-fit h-full relative bg-l-secondary dark:bg-d-secondary rounded-md">
             <img src={pro.image} alt="image" className="w-auto h-30 mx-auto" />

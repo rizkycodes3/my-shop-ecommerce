@@ -1,18 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import ProductContext from "./ProductContext";
+import { ProductContext } from "./Context";
 
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const controller = new AbortController();
 
     const fetchProducts = async () => {
       try {
-        setError(null);
         const response = await axios.get("https://fakestoreapi.com/products", {
           signal: controller.signal,
         });
@@ -20,11 +17,6 @@ const ProductProvider = ({ children }) => {
       } catch (requestError) {
         if (!axios.isCancel(requestError)) {
           console.error("Gagal mengambil produk:", requestError);
-          setError("Produk tidak dapat dimuat. Silakan coba lagi nanti.");
-        }
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
         }
       }
     };
@@ -34,7 +26,7 @@ const ProductProvider = ({ children }) => {
     return () => controller.abort();
   }, []);
 
-  return <ProductContext.Provider value={{ products, loading, error }}>{children}</ProductContext.Provider>;
+  return <ProductContext.Provider value={{ products }}>{children}</ProductContext.Provider>;
 };
 
-export { ProductProvider };
+export default ProductProvider;

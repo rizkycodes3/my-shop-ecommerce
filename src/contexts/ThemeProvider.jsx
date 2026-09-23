@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ThemeContext from "./ThemeContext";
+import { ThemeContext } from "./Context";
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -23,4 +23,4 @@ const ThemeProvider = ({ children }) => {
   return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };
 
-export { ThemeProvider };
+export default ThemeProvider;

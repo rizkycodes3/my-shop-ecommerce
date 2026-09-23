@@ -1,18 +1,19 @@
-// context
+//👇 context
 import { useContext, useState } from "react";
-import ThemeContext from "../contexts/ThemeContext";
-// icons
+import { ThemeContext } from "../contexts/Context";
+//👇 icons
 import { FcShop } from "react-icons/fc";
 import { MdOutlineShoppingCart, MdMenu, MdOutlineCancel } from "react-icons/md";
-// image
+//👇 image
 import LightMode from "../assets/light-mode.png";
 import DarkMode from "../assets/dark-mode.png";
-// link
-import { Link } from "react-router-dom";
+//👇 route
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <nav
@@ -35,7 +36,7 @@ const Navbar = () => {
           <img src={DarkMode} alt="dark mode" className="w-12 cursor-pointer drop-shadow-2xl transition-all duration-300" />
         </div>
 
-        <MdOutlineShoppingCart className="cursor-pointer" />
+        <MdOutlineShoppingCart onClick={() => navigate("/cart")} className="cursor-pointer" />
 
         {isOpen ? (
           <MdOutlineCancel onClick={() => setIsOpen(false)} className="cursor-pointer" />

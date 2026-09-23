@@ -1,6 +1,6 @@
 // context
 import { useContext } from "react";
-import ProductContext from "../contexts/ProductContext";
+import { ProductContext } from "../contexts/Context";
 // swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
