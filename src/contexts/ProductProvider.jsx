@@ -10,10 +10,11 @@ const ProductProvider = ({ children }) => {
 
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("https://fakestoreapi.com/products", {
+        const res = await axios.get("https://dummyjson.com/products", {
           signal: controller.signal,
         });
-        setProducts(Array.isArray(response.data) ? response.data : []);
+        console.log(res.data.products);
+        setProducts(Array.isArray(res.data.products) ? res.data.products : []);
       } catch (requestError) {
         if (!axios.isCancel(requestError)) {
           console.error("Gagal mengambil produk:", requestError);

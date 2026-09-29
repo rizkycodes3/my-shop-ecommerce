@@ -1,15 +1,15 @@
-// context
+//👇 context
 import { useContext } from "react";
 import { ProductContext } from "../contexts/Context";
-// swiper
+//👇 swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-// logo
+//👇 logo
 import { FaStar, FaArrowRight } from "react-icons/fa6";
-// route
+//👇 route
 import { Link } from "react-router-dom";
 
 const ProductPreview = () => {
@@ -40,11 +40,11 @@ const ProductPreview = () => {
       >
         {productsSlice.map((pro) => (
           <SwiperSlide key={pro.id} className="swiper-slide py-5 flex! flex-col gap-2 h-130!">
-            <img src={pro.image} alt="image" className="w-auto h-60 mx-auto" />
+            <img src={pro.images[0]} alt="image" className="w-auto h-60 mx-auto" />
             <h2 className="text-2xl font-semibold font-playfair mt-5">{pro.title}</h2>
             <span className="flex gap-1 items-center bg-l-accent-warning/30 w-fit rounded-sm px-1">
               <FaStar className="text-xs" />
-              {pro.rating.rate}
+              {pro.rating}
             </span>
             <span className="text-2xl font-semibold">${pro.price}</span>
           </SwiperSlide>

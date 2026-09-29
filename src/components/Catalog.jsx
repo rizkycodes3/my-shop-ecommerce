@@ -26,7 +26,7 @@ const Catalog = () => {
     });
     const rating = products.sort((a, b) => {
       if (isRating) {
-        return b.rating.rate - a.rating.rate;
+        return b.rating - a.rating;
       }
     });
     return (whatSearch === "" || search) && (whatCategory === "" || category) && (whatPrice === "" || price) && (!isRating || rating);
@@ -55,6 +55,7 @@ const Catalog = () => {
   return (
     <section className="mt-12 bg-l-primary dark:bg-d-primary text-l-text-primary dark:text-d-text-primary">
       {/*👇 filter */}
+      {/* search */}
       <div className="bg-gray-400/50 p-2 flex flex-wrap gap-3">
         <div className="relative w-full">
           <input
@@ -67,7 +68,7 @@ const Catalog = () => {
           />
           <MdSearch className="absolute right-1 top-1/2 -translate-y-1/2" />
         </div>
-
+        {/* sort category */}
         <select name="category" value={whatCategory} onChange={changeCategory} className={styleSelect}>
           <option value="" hidden>
             kategori
@@ -80,7 +81,7 @@ const Catalog = () => {
               </option>
             ))}
         </select>
-
+        {/* sort price */}
         <select name="harga" value={whatPrice} onChange={changePrice} className={styleSelect}>
           <option value="" hidden>
             Harga
@@ -88,13 +89,11 @@ const Catalog = () => {
           <option value="tertinggi">Harga Tertinggi</option>
           <option value="terendah">Harga Terendah</option>
         </select>
-
-        <button
-          onClick={changeRating}
-          className={`w-fit py-1 px-2 capitalize text-xs cursor-pointer ${isRating ? "bg-d-accent-primary text-d-text-primary" : "bg-l-primary dark:bg-d-primary"}`}
-        >
+        {/* sort rating */}
+        <button onClick={changeRating} className={`w-fit py-1 px-2 capitalize text-xs cursor-pointer ${isRating ? "bg-d-accent-primary text-d-text-primary" : "bg-l-primary dark:bg-d-primary"}`}>
           Rating
         </button>
+        {/* reset */}
         <button onClick={resetFilter} className={styleSelect}>
           Reset
         </button>
@@ -102,13 +101,13 @@ const Catalog = () => {
 
       {/*👇 catalog items */}
       <ul onClick={test} className="grid grid-cols-2 gap-x-3 gap-y-8 p-3 md:grid-cols-3 lg:grid-cols-4">
-        {productsFilter.map((pro, i) => (
-          <li key={i} className="py-5 px-3 pb-15 flex flex-col gap-2 w-fit h-full relative bg-l-secondary dark:bg-d-secondary rounded-md">
-            <img src={pro.image} alt="image" className="w-auto h-30 mx-auto" />
+        {productsFilter.map((pro) => (
+          <li key={pro.id} className="py-5 px-3 pb-15 flex flex-col gap-2 w-fit h-full relative bg-l-secondary dark:bg-d-secondary rounded-md">
+            <img src={pro.images[0]} alt="image" className="w-auto h-30 mx-auto" />
             <h2 className="font-semibold font-playfair mt-5 lg:text-lg">{pro.title}</h2>
             <span className="flex gap-1 items-center text-sm bg-l-accent-warning/30 w-fit rounded-sm px-1">
               <FaStar />
-              {pro.rating.rate}
+              {pro.rating}
             </span>
             <span className="text-lg font-semibold">${pro.price}</span>
             <p className="text-xs/relaxed md:text-sm/relaxed line-clamp-5">{pro.description}</p>
