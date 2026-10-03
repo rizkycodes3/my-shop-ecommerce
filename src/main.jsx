@@ -3,11 +3,21 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
+// context
+import ThemeProvider from "./contexts/ThemeProvider";
+import ProductProvider from "./contexts/ProductProvider";
+import CartProvider from "./contexts/CartProvider";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <ThemeProvider>
+        <ProductProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </ProductProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </StrictMode>,
 );

@@ -13,7 +13,6 @@ const ProductProvider = ({ children }) => {
         const res = await axios.get("https://dummyjson.com/products", {
           signal: controller.signal,
         });
-        console.log(res.data.products);
         setProducts(Array.isArray(res.data.products) ? res.data.products : []);
       } catch (requestError) {
         if (!axios.isCancel(requestError)) {
@@ -21,7 +20,6 @@ const ProductProvider = ({ children }) => {
         }
       }
     };
-
     fetchProducts();
 
     return () => controller.abort();
