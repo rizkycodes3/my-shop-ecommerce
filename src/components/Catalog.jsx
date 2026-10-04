@@ -1,7 +1,6 @@
 //👇 context && reducer
 import { useContext, useState } from "react";
 import { ProductContext, CartContext } from "../contexts/Context";
-
 //👇 icons
 import { MdSearch, MdOutlineAddShoppingCart } from "react-icons/md";
 import { FaStar } from "react-icons/fa6";

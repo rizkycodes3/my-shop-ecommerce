@@ -1,12 +1,12 @@
-// component
+//👇 component
 import ProductPreview from "./ProductPreview";
 import Promo from "./Promo";
 import Footer from "./Footer";
-// slide
+//👇 slide
 import Slide1 from "./slideHero/Slide1";
 import Slide2 from "./slideHero/Slide2";
 import Slide3 from "./slideHero/Slide3";
-// swiper
+//👇 swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";

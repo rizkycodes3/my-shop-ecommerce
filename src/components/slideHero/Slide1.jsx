@@ -3,13 +3,8 @@ import { Link } from "react-router-dom";
 const Slide1 = () => {
   return (
     <div className="swiper-slide flex! flex-col justify-center items-center gap-6 p-6 text-center sm:p-10">
-      {/* title */}
-      <h1 className="text-3xl font-bold font-playfair tracking-wide leading-tight max-w-2xl sm:text-4xl lg:text-5xl">
-        Halo Guys, Selamat Datang di Toko Kami & Selamat Belanja!
-      </h1>
-      {/* description */}
+      <h1 className="text-3xl font-bold font-playfair tracking-wide leading-tight max-w-2xl sm:text-4xl lg:text-5xl">Halo Guys, Selamat Datang di Toko Kami & Selamat Belanja!</h1>
       <p className="text-base text-gray-600 max-w-lg dark:text-gray-300 sm:text-lg">Temukan produk terbaik untuk memenuhi segala kebutuhan Anda 😉</p>
-      {/* button */}
       <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
         <Link
           to="/catalog"

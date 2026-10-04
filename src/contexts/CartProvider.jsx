@@ -1,7 +1,6 @@
 import { useReducer, useEffect } from "react";
-
 import { CartContext } from "./Context";
-import { initialState, CartReducer, init } from "./CartReducer";
+import { initialState, CartReducer, init } from "../CartReducer";
 
 const CartProvider = ({ children }) => {
   const [cartState, cartDispatch] = useReducer(CartReducer, initialState, init);

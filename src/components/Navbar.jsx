@@ -1,15 +1,12 @@
 //👇 context
 import { useContext, useState } from "react";
 import { ThemeContext, CartContext } from "../contexts/Context";
-
 //👇 icons
 import { FcShop } from "react-icons/fc";
 import { MdOutlineShoppingCart, MdMenu, MdOutlineCancel } from "react-icons/md";
-
 //👇 image
 import LightMode from "../assets/light-mode.png";
 import DarkMode from "../assets/dark-mode.png";
-
 //👇 route
 import { Link, useNavigate } from "react-router-dom";
 

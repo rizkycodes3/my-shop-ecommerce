@@ -52,6 +52,7 @@ const CartReducer = (state, action) => {
         cart: state.cart.filter((x) => x.id !== id.id),
       };
     }
+
     case "payment": {
       return {
         ...state,

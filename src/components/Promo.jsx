@@ -1,7 +1,5 @@
-//👇 context
 import { useContext } from "react";
 import { ProductContext } from "../contexts/Context";
-//👇 route
 import { Link } from "react-router-dom";
 
 const Promo = () => {

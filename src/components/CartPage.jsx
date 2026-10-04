@@ -9,7 +9,6 @@ const CartPage = () => {
   const navigate = useNavigate();
   const { cartState, cartDispatch } = useContext(CartContext);
   const cartItems = cartState.cart;
-  // console.log(cartItems);
 
   const subTotal = cartItems.reduce((acc, curr) => {
     const multiplication = curr.price * curr.quantity;
@@ -42,6 +41,7 @@ const CartPage = () => {
   return (
     <div className="pt-15 bg-l-primary min-h-screen flex flex-col gap-5 dark:bg-d-primary text-l-text-primary dark:text-d-text-primary pb-5 xl:grid xl:grid-cols-2 xl:grid-rows-[auto_1fr] xl:gap-y-8">
       <h1 className="text-xl font-bold text-center xl:col-span-full xl:text-3xl">Keranjang Saya</h1>
+
       <ul className="col-[1/2] row-[2/3]">
         {cartItems.map((item) => (
           <li key={item.id} className="border grid grid-cols-[1fr_2fr_0.5fr_0.5fr] sm:grid-cols-[1fr_3fr_1fr_0.5fr] grid-rows-2 items-center gap-2 py-1 rounded-2xl mt-1 h-30 mx-2 my-3">
@@ -53,10 +53,11 @@ const CartPage = () => {
               <span>{item.quantity}</span>
               <FaPlus onClick={() => cartDispatch({ type: "INCREMENT", payload: item })} className="cursor-pointer" />
             </div>
-            <FaTrash onClick={() => cartDispatch({ type: "REMOVE_FROM_CART", payload: item })} className="row-span-full col-[4/5] justify-self-center sm:text-xl xl:text-2xl" />
+            <FaTrash onClick={() => cartDispatch({ type: "REMOVE_FROM_CART", payload: item })} className="row-span-full col-[4/5] justify-self-center cursor-pointer sm:text-xl xl:text-2xl" />
           </li>
         ))}
       </ul>
+
       <div className="border rounded-2xl mx-2 p-3 col-[2/3] row-[2/3] xl:self-start xl:p-5">
         <h2 className="font-bold text-xl mb-4 xl:text-2xl">Ringkasan Pesanan</h2>
         <div className="flex justify-between xl:text-xl">
