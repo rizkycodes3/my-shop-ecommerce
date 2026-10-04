@@ -103,8 +103,8 @@ Make sure your development environment has:
 Clone the repository and install the project's dependencies:
 
 ```bash
-git clone <repository-url>
-cd <project-directory>
+git clone https://github.com/rizkycodes3/my-shop-ecommerce.git
+cd my-shop-ecommerce
 npm install
 ```
 
